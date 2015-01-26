@@ -27,7 +27,7 @@ module MasterMind
 
         guess = @computer.initial_guess(@pattern_len, @pattern_range)
 
-        (@tries).times do |n|
+        @tries.times do |n|
           result = @computer.compare_patterns(guess, @pattern)
           if win?(result)
             puts "I guessed the pattern #{guess.join.upcase} in #{n + 1} tries!"
@@ -105,7 +105,7 @@ module MasterMind
 
   class Computer
 
-    #generates an array of random values of either b or w
+    #generates an array of random values within the range of colors
     def gen_pattern(len, range)
       (1..len).map { range.to_a.sample }
     end
